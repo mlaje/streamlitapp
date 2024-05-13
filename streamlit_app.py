@@ -23,12 +23,12 @@ st.write(
 
 cnx = st.connection("snowflake")
 session = cnx.session()
-my_dataframe = session.table("ZENAS_ATHLEISURE_DB.products.catalog_for_website").select(col('COLOR_OR_STYLE'))
+my_dataframe = session.table("ZENAS_ATHLEISURE_DB.products.catalog_for_website").select(col('COLOR_OR_STYLE'), col('PRICE'))
 pd_df = my_dataframe.to_pandas()
 #st.dataframe(pd_df)
 #st.dataframe(data=my_dataframe, use_container_width=True)
 
-ingredients_list = st.multiselect('Elegir ropa', my_dataframe, max_selections = 5)
+ingredients_list = st.multiselect('Elegir ropa', my_dataframe, max_selections = 1)
 import requests
 
 if ingredients_list:
@@ -37,6 +37,10 @@ if ingredients_list:
     
     ingredients_string = ''
     
+    st.write(ingredients_string)
+    search_on = pd_df.loc[pd_df['COLOR_OR_STYLE'] == ingredients_string, 'PRICE'].iloc[0]
+    st.write(search_on)
+
     #for fruit in ingredients_list:
     #    ingredients_string +=  fruit.lstrip(" ") + ' '
     #    search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit, 'SEARCH_ON'].iloc[0]
