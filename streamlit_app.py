@@ -1,4 +1,5 @@
-import streamlit
+import streamlit as st
+from snowflake.snowpark.functions import col
 import snowflake.connector
 import pandas
 streamlit.title('Zena\'s Amazing Athleisure Catalog')
