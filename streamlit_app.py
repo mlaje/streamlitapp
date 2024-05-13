@@ -23,7 +23,7 @@ st.write(
 
 cnx = st.connection("snowflake")
 session = cnx.session()
-my_dataframe = session.view("ZENAS_ATHLEISURE_DB.public.catalog_for_website").select(col('COLOR_OR_STYLE'))
+my_dataframe = session.table("ZENAS_ATHLEISURE_DB.products.catalog_for_website").select(col('COLOR_OR_STYLE'))
 pd_df = my_dataframe.to_pandas()
 #st.dataframe(pd_df)
 #st.dataframe(data=my_dataframe, use_container_width=True)
