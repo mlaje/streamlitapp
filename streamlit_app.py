@@ -28,17 +28,17 @@ pd_df = my_dataframe.to_pandas()
 #st.dataframe(pd_df)
 #st.dataframe(data=my_dataframe, use_container_width=True)
 
-ingredients_list = st.multiselect('Elegir ropa', my_dataframe, max_selections = 1)
+ropa = st.select('Elegir ropa', my_dataframe)
 import requests
 
-if ingredients_list:
+if ropa:
     #st.write(ingredients_list)
     #st.text(ingredients_list)
     
-    ingredients_string = ''
+    #ingredients_string = ''
     
-    st.write(ingredients_string)
-    search_on = pd_df.loc[pd_df['COLOR_OR_STYLE'] == ingredients_string, 'PRICE'].iloc[0]
+    st.write(ropa)
+    search_on = pd_df.loc[pd_df['COLOR_OR_STYLE'] == ropa, 'PRICE'].iloc[0]
     st.write(search_on)
 
     #for fruit in ingredients_list:
