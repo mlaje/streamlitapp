@@ -2,7 +2,7 @@ import streamlit as st
 from snowflake.snowpark.functions import col
 import snowflake.connector
 import pandas
-streamlit.title('Zena\'s Amazing Athleisure Catalog')
+st.title('Zena\'s Amazing Athleisure Catalog')
 # connect to snowflake
 
 cnx = st.connection("snowflake")
