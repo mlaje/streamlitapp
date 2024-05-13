@@ -28,7 +28,7 @@ pd_df = my_dataframe.to_pandas()
 #st.dataframe(pd_df)
 #st.dataframe(data=my_dataframe, use_container_width=True)
 
-ropa = st.select('Elegir ropa', my_dataframe)
+ropa = st.multiselect('Elegir ropa', my_dataframe)
 import requests
 
 if ropa:
