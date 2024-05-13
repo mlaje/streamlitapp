@@ -23,13 +23,12 @@ st.write('The name on your Smoothie will be:' , name_on_order)
 
 cnx = st.connection("snowflake")
 session = cnx.session()
-my_dataframe = session.table("ZENAS_ATHLEISURE_DB.public.catalog_for_website").select(col('COLOR_OR_STYLE'))
+my_dataframe = session.view("ZENAS_ATHLEISURE_DB.public.catalog_for_website").select(col('COLOR_OR_STYLE'))
 pd_df = my_dataframe.to_pandas()
 #st.dataframe(pd_df)
 #st.dataframe(data=my_dataframe, use_container_width=True)
 
 ingredients_list = st.multiselect('Elegir ropa', my_dataframe, max_selections = 5)
-
 import requests
 
 if ingredients_list:
